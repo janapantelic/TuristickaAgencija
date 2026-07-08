@@ -1,0 +1,42 @@
+<div class="dialog-container">
+  
+  <div class="dialog-header">
+    <h3 mat-dialog-title *ngIf="flag == 1" class="title-add">Dodavanje turističke agencije</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2" class="title-edit">Modifikacija turističke agencije: <span>{{data.naziv}}</span></h3>
+    <h3 mat-dialog-title *ngIf="flag == 3" class="title-delete">Brisanje turističke agencije: <span>{{data.naziv}}</span></h3>
+  </div>
+
+  <form class="dialog-content-form" #formControl="ngForm">
+    
+    <div class="form-fields-wrapper">
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Naziv</mat-label>
+        <input matInput [(ngModel)]="data.naziv" name="naziv" [disabled]="flag == 3" required autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Adresa</mat-label>
+        <input matInput [(ngModel)]="data.adresa" name="adresa" [disabled]="flag == 3" required autocomplete="off">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Kontakt</mat-label>
+        <input type="text" matInput [(ngModel)]="data.kontakt" name="kontakt" [disabled]="flag == 3" autocomplete="off">
+      </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions-row">
+      <button mat-flat-button *ngIf="flag == 1" type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid" class="save-btn">
+        Sačuvaj
+      </button>
+      <button mat-flat-button *ngIf="flag == 2" type="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid" class="save-btn">
+        Sačuvaj
+      </button>
+      <button mat-flat-button *ngIf="flag == 3" type="submit" [mat-dialog-close]="1" (click)="delete()" class="delete-confirm-btn">
+        Obriši
+      </button>
+      <button mat-stroked-button (click)="cancel()" type="button" class="cancel-btn">Poništi</button>
+    </div>
+
+  </form>
+</div>

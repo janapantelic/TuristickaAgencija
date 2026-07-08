@@ -1,0 +1,125 @@
+/* Zaglavlje stranice */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Kontejner tabele sa belom pozadinom */
+.content-container {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Traka iznad tabele gde je pretraga */
+.table-actions-bar {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.search-field {
+  width: 320px;
+  margin-bottom: -1.25em;
+}
+
+/* Generalni stil za tabelu */
+.custom-table {
+  background: transparent;
+}
+
+/* Zaglavlje tabele */
+::ng-deep .custom-table .mat-mdc-header-row {
+  background-color: #f8fafc !important;
+  min-height: 56px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+::ng-deep .custom-table .mat-mdc-header-cell {
+  color: #475569 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Izgled redova i animacija na hover */
+.table-row {
+  min-height: 52px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.15s ease;
+}
+
+.table-row:hover {
+  background-color: #f8fafc;
+}
+
+/* Posebno stilizovanje teksta */
+.bold-id {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.main-text {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.description-text {
+  color: #64748b;
+  font-size: 13.5px;
+}
+
+/* Proporcije kolona prilagođene Destinaciji */
+.mat-column-id { flex: 0 0 8%; }
+.mat-column-mesto { flex: 0 0 22%; }
+.mat-column-drzava { flex: 0 0 20%; }
+.mat-column-opis { flex: 0 0 40%; }
+.mat-column-actions { flex: 0 0 10%; justify-content: flex-end; }
+
+/* Dugmići i ikone */
+.add-btn {
+  background-color: #3f51b5 !important;
+  color: #ffffff !important;
+  transform: scale(0.9);
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.edit-icon-btn {
+  color: #3f51b5 !important;
+}
+
+.edit-icon-btn:hover {
+  background-color: rgba(63, 81, 181, 0.04) !important;
+}
+
+.delete-icon-btn {
+  color: #ef4444 !important;
+}
+
+.delete-icon-btn:hover {
+  background-color: rgba(239, 68, 68, 0.04) !important;
+}
+
+/* Paginacija */
+.custom-paginator {
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+}

@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h2 class="page-title">Turističke Agencije</h2>
+</div>
+
+<div class="content-container mat-elevation-z2">
+  
+  <div class="table-actions-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Pretražite turističke agencije</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Npr. Kontiki">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" class="custom-table" matSort matSortActive="id">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="bold-id">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="main-text">{{row.naziv}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="adresa">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Adresa</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.adresa}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="kontakt">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Kontakt</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="contact-text">{{row.kontakt}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="actions-header">
+        <button mat-mini-fab color="primary" class="add-btn" (click)="openDialog(1, 0, '', '', '')" title="Dodaj novu agenciju">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+      
+      <mat-cell *matCellDef="let row" class="actions-cell">
+        <button mat-icon-button class="edit-icon-btn" (click)="openDialog(2, row.id, row.naziv, row.adresa, row.kontakt)" title="Izmeni">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="delete-icon-btn" (click)="openDialog(3, row.id, row.naziv, row.adresa, row.kontakt)" title="Obriši">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" class="table-row"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator class="custom-paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+
+</div>

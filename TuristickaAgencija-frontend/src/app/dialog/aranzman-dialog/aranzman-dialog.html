@@ -1,0 +1,64 @@
+<div class="dialog-container">
+  
+  <div class="dialog-header">
+    <h3 mat-dialog-title *ngIf="flag == 1" class="title-add">Dodavanje aranžmana</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2" class="title-edit">Modifikacija aranžmana: <span>ID {{data.id}}</span></h3>
+    <h3 mat-dialog-title *ngIf="flag == 3" class="title-delete">Brisanje aranžmana: <span>ID {{data.id}}</span></h3>
+  </div>
+
+  <form class="dialog-content-form" ngSubmit="submit" #formControl="ngForm">
+    
+    <div class="form-fields-wrapper">
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Ukupna cena</mat-label>
+        <input matInput [(ngModel)]="data.ukupnaCena" name="ukupnaCena" [disabled]="flag == 3" required autocomplete="off">
+        <span matSuffix style="margin-right: 8px;">RSD</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Datum realizacije</mat-label>
+        <input matInput [matDatepicker]="datum_realizacije" [(ngModel)]="data.datumRealizacije" name="datumRealizacije" [disabled]="flag == 3" required>
+        <mat-datepicker-toggle matSuffix [for]="datum_realizacije"></mat-datepicker-toggle>
+        <mat-datepicker #datum_realizacije></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Hotel</mat-label>
+        <mat-select [(ngModel)]="data.hotel" name="hotel" [compareWith]="compareTo" [disabled]="flag == 3" required>
+          <mat-option *ngFor="let hotel of hotels" [value]="hotel">
+            {{ hotel.naziv }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width-field">
+        <mat-label>Turistička agencija</mat-label>
+        <mat-select [(ngModel)]="data.turistickaAgencija" name="turistickaAgencija" [compareWith]="compareTo" [disabled]="flag == 3" required>
+          <mat-option *ngFor="let turistickaAgencija of turistickaAgencijas" [value]="turistickaAgencija">
+            {{ turistickaAgencija.naziv || turistickaAgencija.id }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="checkbox-wrapper">
+        <mat-checkbox [(ngModel)]="data.placeno" name="placeno" [disabled]="flag == 3" color="primary">
+          Aranžman je u celosti plaćen
+        </mat-checkbox>
+      </div>
+    </div>
+
+    <div mat-dialog-actions class="dialog-actions-row">
+      <button mat-flat-button *ngIf="flag == 1" type="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="add()" class="save-btn">
+        Sačuvaj
+      </button>
+      <button mat-flat-button *ngIf="flag == 2" type="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="update()" class="save-btn">
+        Sačuvaj
+      </button>
+      <button mat-flat-button *ngIf="flag == 3" type="submit" [mat-dialog-close]="1" (click)="delete()" class="delete-confirm-btn">
+        Obriši
+      </button>
+      <button mat-stroked-button (click)="cancel()" type="button" tabindex="-1" class="cancel-btn">Poništi</button>
+    </div>
+
+  </form>
+</div>

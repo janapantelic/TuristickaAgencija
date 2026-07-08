@@ -1,0 +1,191 @@
+/* Zaglavlje stranice */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Glavni kontejner tabele */
+.content-container {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Traka iznad tabele */
+.table-actions-bar {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.search-field {
+  width: 320px;
+  margin-bottom: -1.25em;
+}
+
+/* Generalna tabela */
+.custom-table {
+  background: transparent;
+}
+
+::ng-deep .custom-table .mat-mdc-header-row {
+  background-color: #f8fafc !important;
+  min-height: 56px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+::ng-deep .custom-table .mat-mdc-header-cell {
+  color: #475569 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Redovi i selekcija */
+.table-row {
+  min-height: 52px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: all 0.15s ease;
+}
+
+.click-row {
+  cursor: pointer;
+}
+
+.table-row:hover {
+  background-color: #f8fafc;
+}
+
+/* Stil za selektovani red u tabeli hotela */
+.selected-row {
+  background-color: rgba(63, 81, 181, 0.06) !important;
+  border-left: 4px solid #3f51b5;
+}
+
+/* Ćelije unutar tabele - fiksirana debljina i boja slova */
+::ng-deep .custom-table .mat-mdc-cell {
+  color: #334155 !important;
+  font-size: 14px !important;
+}
+
+.bold-id {
+  font-weight: 600 !important;
+  color: #64748b;
+}
+
+.main-text {
+  font-weight: 500 !important;
+  color: #0f172a;
+}
+
+.stars-badge {
+  background-color: #fef3c7;
+  color: #d97706;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.description-text {
+  color: #64748b;
+  font-size: 13.5px;
+}
+
+.geo-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  color: #3f51b5; /* Promenjeno u plavu temu radi sklada */
+  margin-right: 4px;
+}
+
+/* Proporcije kolona */
+.mat-column-id { flex: 0 0 8%; }
+.mat-column-naziv { flex: 0 0 25%; }
+.mat-column-brojZvezdica { flex: 0 0 15%; }
+.mat-column-opis { flex: 0 0 27%; }
+.mat-column-destinacija { flex: 0 0 15%; }
+.mat-column-actions { flex: 0 0 10%; justify-content: flex-end; }
+
+/* Dugmići i forsiranje boja za ikone */
+.add-btn {
+  background-color: #3f51b5 !important;
+  color: #ffffff !important;
+  transform: scale(0.9);
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+/* Edit dugme i ikona */
+.edit-icon-btn mat-icon {
+  color: #3f51b5 !important;
+}
+
+.edit-icon-btn:hover {
+  background-color: rgba(63, 81, 181, 0.04) !important;
+}
+
+/* Delete dugme i ikona */
+.delete-icon-btn mat-icon {
+  color: #ef4444 !important;
+}
+
+.delete-icon-btn:hover {
+  background-color: rgba(239, 68, 68, 0.04) !important;
+}
+
+/* Paginacija */
+.custom-paginator {
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+}
+
+/* Kontejner za donju tabelu (Aranžmani) */
+.detail-container {
+  margin-top: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+}
+
+.detail-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #475569;
+}
+
+.detail-header h3 span {
+  color: #3f51b5;
+  font-weight: 600;
+}

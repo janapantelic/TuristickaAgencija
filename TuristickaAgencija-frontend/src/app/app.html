@@ -1,0 +1,47 @@
+<mat-sidenav-container class="app-container">
+  <mat-sidenav mode="side" opened [fixedInViewport]="true" class="main-sidenav">
+    
+    <div class="logo-area">
+      <a mat-icon-button [routerLink]="['/home']" class="home-btn" title="Početna">
+        <mat-icon>home</mat-icon>
+      </a>
+      <span class="nav-title">Meni</span>
+    </div>
+
+    <mat-accordion multi="false" class="nav-accordion">
+
+      <mat-expansion-panel elevation="0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="panel-icon">apps</mat-icon> Aplikacija
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <mat-nav-list class="sub-nav-list">
+          <a mat-list-item [routerLink]="['/aranzman']" routerLinkActive="active-link">Aranžman</a>
+          <a mat-list-item [routerLink]="['/destinacija']" routerLinkActive="active-link">Destinacija</a>
+          <a mat-list-item [routerLink]="['/hotel']" routerLinkActive="active-link">Hotel</a>
+          <a mat-list-item [routerLink]="['/turisticka-agencija']" routerLinkActive="active-link">Turistička Agencija</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel elevation="0">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="panel-icon">info</mat-icon> Informacije
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <mat-nav-list class="sub-nav-list">
+          <a mat-list-item [routerLink]="['/about']" routerLinkActive="active-link">O aplikaciji</a>
+          <a mat-list-item [routerLink]="['/author']" routerLinkActive="active-link">O autoru</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

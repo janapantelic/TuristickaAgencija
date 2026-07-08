@@ -1,0 +1,82 @@
+<div class="page-header">
+  <h2 class="page-title">Hoteli</h2>
+</div>
+
+<div class="content-container mat-elevation-z2">
+  
+  <div class="table-actions-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Pretražite hotele</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Npr. Mediterranean Resort">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" class="custom-table" matSort>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="bold-id">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="naziv">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Naziv</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="main-text">{{row.naziv}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="brojZvezdica">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Broj zvezdica</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="stars-badge">{{row.brojZvezdica}} ★</span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="opis">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Opis</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="description-text">{{row.opis}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="destinacija">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Destinacija</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="main-text">
+        <mat-icon class="geo-icon">location_on</mat-icon> {{row.destinacija?.mesto}}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="actions-header">
+        <button mat-mini-fab color="primary" class="add-btn" (click)="openDialog(1, 0, '', 0, '', null)" title="Dodaj novi hotel">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+      
+      <mat-cell *matCellDef="let row" class="actions-cell">
+        <button mat-icon-button class="edit-icon-btn" (click)="openDialog(2, row.id, row.naziv, row.brojZvezdica, row.opis, row.destinacija)" title="Izmeni">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="delete-icon-btn" (click)="openDialog(3, row.id, row.naziv, row.brojZvezdica, row.opis, row.destinacija)" title="Obriši">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" 
+             class="table-row click-row" 
+             (click)="selectedRow(row)"
+             [ngClass]="{'selected-row': selektovanHotel != null && selektovanHotel.id == row.id}">
+    </mat-row>
+
+  </mat-table>
+
+  <mat-paginator class="custom-paginator" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+
+</div>
+
+<div class="detail-container" *ngIf="selektovanHotel">
+  <div class="detail-header">
+    <mat-icon color="primary">content_paste</mat-icon>
+    <h3>Aranžmani za hotel: <span>{{selektovanHotel.naziv}}</span></h3>
+  </div>
+  <app-aranzman [selektovanHotel]="selektovanHotel"></app-aranzman>
+</div>

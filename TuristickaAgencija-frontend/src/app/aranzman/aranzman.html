@@ -1,0 +1,75 @@
+<div class="page-header">
+  <h2 class="page-title">Aranžmani</h2>
+</div>
+
+<div class="content-container mat-elevation-z2">
+  
+  <div class="table-actions-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Pretražite aranžmane</mat-label>
+      <input matInput (keyup)="applyFilter($any($event.target).value)" placeholder="Pretraži po bilo kom polju...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <mat-table [dataSource]="dataSource" class="custom-table" matSort>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="bold-id">{{row.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ukupnaCena">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ukupna cena</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="price-text">{{row.ukupnaCena}} RSD</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="placeno">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Plaćeno</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <span class="status-badge" [ngClass]="row.placeno ? 'status-paid' : 'status-unpaid'">
+          {{row.placeno ? 'Da' : 'Ne'}}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="datumRealizacije">
+      <mat-header-cell *matHeaderCellDef mat-sort-header="date">Datum realizacije</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="date-text">{{ row.datumRealizacije | date: "dd.MM.yyyy." }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="hotel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel (ID)</mat-header-cell>
+      <mat-cell *matCellDef="let row"><span class="hotel-id-badge">H-{{row.hotel?.id}}</span></mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="turistickaAgencija">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Turistička agencija</mat-header-cell>
+      <mat-cell *matCellDef="let row" class="main-text">{{row.turistickaAgencija?.naziv}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef class="actions-header">
+        <button mat-mini-fab color="primary" class="add-btn" (click)="openDialog(1, 0, 0, false)" title="Dodaj novi aranžman">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-header-cell>
+      
+      <mat-cell *matCellDef="let row" class="actions-cell">
+        <button mat-icon-button class="edit-icon-btn" (click)="openDialog(2, row.id, row.ukupnaCena, row.placeno, row.datumRealizacije, row.hotel, row.turistickaAgencija)" title="Izmeni">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="delete-icon-btn" (click)="openDialog(3, row.id, row.ukupnaCena, row.placeno, row.datumRealizacije, row.hotel, row.turistickaAgencija)" title="Obriši">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" class="table-row"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator class="custom-paginator" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+
+</div>

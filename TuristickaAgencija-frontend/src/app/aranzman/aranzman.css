@@ -1,0 +1,149 @@
+/* Zaglavlje stranice */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Kontejner tabele */
+.content-container {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Traka iznad tabele */
+.table-actions-bar {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.search-field {
+  width: 320px;
+  margin-bottom: -1.25em;
+}
+
+/* Generalni stil za tabelu */
+.custom-table {
+  background: transparent;
+}
+
+::ng-deep .custom-table .mat-mdc-header-row {
+  background-color: #f8fafc !important;
+  min-height: 56px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+::ng-deep .custom-table .mat-mdc-header-cell {
+  color: #475569 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Izgled redova */
+.table-row {
+  min-height: 52px;
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.15s ease;
+}
+
+.table-row:hover {
+  background-color: #f8fafc;
+}
+
+/* Tekst i bedževi unutar ćelija */
+.bold-id {
+  font-weight: 600;
+  color: #64748b;
+}
+
+.main-text {
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.price-text {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.date-text {
+  color: #475569;
+}
+
+.hotel-id-badge {
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Status značke (Da/Ne) */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 36px;
+}
+
+.status-paid {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.status-unpaid {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Proporcije kolona za Aranžman */
+.mat-column-id { flex: 0 0 6%; }
+.mat-column-ukupnaCena { flex: 0 0 16%; }
+.mat-column-placeno { flex: 0 0 12%; }
+.mat-column-datumRealizacije { flex: 0 0 20%; }
+.mat-column-hotel { flex: 0 0 12%; }
+.mat-column-turistickaAgencija { flex: 0 0 24%; }
+.mat-column-actions { flex: 0 0 10%; justify-content: flex-end; }
+
+/* Akcije i dugmići */
+.add-btn {
+  background-color: #3f51b5 !important;
+  color: #ffffff !important;
+  transform: scale(0.9);
+}
+
+.actions-cell {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.edit-icon-btn { color: #3f51b5 !important; }
+.edit-icon-btn:hover { background-color: rgba(63, 81, 181, 0.04) !important; }
+.delete-icon-btn { color: #ef4444 !important; }
+.delete-icon-btn:hover { background-color: rgba(239, 68, 68, 0.04) !important; }
+
+/* Paginacija */
+.custom-paginator {
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+}
